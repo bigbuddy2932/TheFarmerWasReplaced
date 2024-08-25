@@ -17,26 +17,43 @@ def plant_maze():
         use_item(Items.Fertilizer)
 
 
+CONST_LAYERS = 299
+
+
 def solve_maze():
-    cell_is_dead = {}
     cell_possible_directions = {}
     last_moved_dir = North
     for x in range(get_world_size()):
         for y in range(get_world_size()):
-            cell_is_dead[(x, y)] = False
             cell_possible_directions[(x, y)] = {North, South, East, West}
 
-    while get_entity_type() == Entities.Hedge:
-        current_cell_directions = cell_possible_directions[cur_pos()]
-        move_to = random_from_set(make_set_without(current_cell_directions, opposite(last_moved_dir)))
-        if move_to == None:
-            move_to = opposite(last_moved_dir)
-            quick_print(move_to)
-        success = move(move_to)
-        if not success:
-            cell_possible_directions[cur_pos()] = make_set_without(current_cell_directions, move_to)
-        else:
-            last_moved_dir = move_to
+    for i in range(CONST_LAYERS):
+        kill_prev_cell = False
+        cell_practical_directions = {}
+        for cell in cell_possible_directions:
+            new_set = set()
+            for direction in cell_possible_directions[cell]:
+                new_set.add(direction)
+            cell_practical_directions[cell] = new_set
+        while get_entity_type() == Entities.Hedge:
+            if kill_prev_cell:
+                cell_practical_directions[cur_pos()] = make_set_without(cell_practical_directions[cur_pos()], opposite(last_moved_dir))
+                kill_prev_cell = False
+            if len(cell_practical_directions[cur_pos()]) == 1:
+                kill_prev_cell = True
+            move_to = random_from_set(make_set_without(cell_practical_directions[cur_pos()], opposite(last_moved_dir)))
+            if move_to == None:
+                move_to = opposite(last_moved_dir)
+                quick_print(move_to)
+                kill_prev_cell = True
+            success = move(move_to)
+            if not success:
+                cell_possible_directions[cur_pos()] = make_set_without(cell_possible_directions[cur_pos()], move_to)
+                cell_practical_directions[cur_pos()] = make_set_without(cell_practical_directions[cur_pos()], move_to)
+            else:
+                last_moved_dir = move_to
+        if i != CONST_LAYERS - 1:
+            use_item(Items.Fertilizer)
 
 
 
