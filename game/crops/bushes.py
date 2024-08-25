@@ -12,7 +12,6 @@ def plant_bush():
 
 def check_bush():
     if can_harvest():
-        harvest()
         plant_bush()
 
 

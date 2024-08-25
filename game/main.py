@@ -9,7 +9,7 @@ clear()
 while True:
     refresh_quotas()
     try_farm_entity(Entities.Grass)
-    try_farm_entity(Entities.Bush)
+    try_farm_entity(Entities.Tree)
     if do_wood_trades():
         continue
     if try_farm_entity(Entities.Carrots):
@@ -22,4 +22,4 @@ while True:
         continue
     #if try_farm_entity(Entities.Treasure):
     #    continue
-    force_farm_entity(Entities.Pumpkin)
+    force_farm_entity(Entities.Tree)

@@ -6,7 +6,7 @@ def will_farm_hay():
 
 
 def init_farm_hay():
-    full_snake_path(check_untill)
+    clear()
 
 
 def farm_hay():

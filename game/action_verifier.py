@@ -2,7 +2,8 @@ from crop_imports import *
 
 will_farm_methods = {Entities.Grass: will_farm_hay, Entities.Bush: will_farm_bushes,
                      Entities.Carrots: will_farm_carrots, Entities.Pumpkin: will_farm_pumpkins,
-                     Entities.Sunflower: will_farm_sunflowers, Entities.Treasure: will_farm_maze}
+                     Entities.Sunflower: will_farm_sunflowers, Entities.Treasure: will_farm_maze,
+                     Entities.Tree: will_farm_trees}
 
 
 def will_farm_entity(entity_to_farm):
@@ -13,7 +14,7 @@ def will_farm_entity(entity_to_farm):
 
 init_methods = {Entities.Grass: init_farm_hay, Entities.Bush: init_farm_bush, Entities.Carrots: init_farm_carrot,
                 Entities.Pumpkin: init_farm_pumpkin, Entities.Sunflower: init_farm_sunflowers,
-                Entities.Treasure: init_farm_maze}
+                Entities.Treasure: init_farm_maze, Entities.Tree: init_farm_trees}
 
 
 def init_entity(entity_to_farm):
@@ -21,7 +22,8 @@ def init_entity(entity_to_farm):
 
 
 farm_methods = {Entities.Grass: farm_hay, Entities.Bush: farm_bush, Entities.Carrots: farm_carrot,
-                Entities.Pumpkin: farm_pumpkin, Entities.Sunflower: farm_sunflowers, Entities.Treasure: farm_maze}
+                Entities.Pumpkin: farm_pumpkin, Entities.Sunflower: farm_sunflowers, Entities.Treasure: farm_maze,
+                Entities.Tree: farm_tree}
 
 
 def farm_entity(entity_to_farm):
