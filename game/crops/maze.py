@@ -23,6 +23,7 @@ CONST_LAYERS = 299
 def solve_maze():
     cell_possible_directions = {}
     last_moved_dir = North
+    destination = None
     for x in range(get_world_size()):
         for y in range(get_world_size()):
             cell_possible_directions[(x, y)] = {North, South, East, West}
@@ -37,14 +38,14 @@ def solve_maze():
             cell_practical_directions[cell] = new_set
         while get_entity_type() == Entities.Hedge:
             if kill_prev_cell:
-                cell_practical_directions[cur_pos()] = make_set_without(cell_practical_directions[cur_pos()], opposite(last_moved_dir))
+                cell_practical_directions[cur_pos()] = make_set_without(cell_practical_directions[cur_pos()],
+                                                                        opposite(last_moved_dir))
                 kill_prev_cell = False
             if len(cell_practical_directions[cur_pos()]) == 1:
                 kill_prev_cell = True
             move_to = random_from_set(make_set_without(cell_practical_directions[cur_pos()], opposite(last_moved_dir)))
             if move_to == None:
                 move_to = opposite(last_moved_dir)
-                quick_print(move_to)
                 kill_prev_cell = True
             success = move(move_to)
             if not success:
@@ -53,8 +54,11 @@ def solve_maze():
             else:
                 last_moved_dir = move_to
         if i != CONST_LAYERS - 1:
-            use_item(Items.Fertilizer)
-
+            quick_print("Fertilized:")
+            quick_print(i)
+            destination = measure()
+            while get_entity_type() == Entities.Treasure:
+                use_item(Items.Fertilizer)
 
 
 def farm_maze():
