@@ -6,7 +6,7 @@ def will_farm_maze():
 
 
 def init_farm_maze():
-    noop = 0
+    pass
 
 
 def plant_maze():

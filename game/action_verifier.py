@@ -40,7 +40,7 @@ def try_farm_entity(entity_to_farm):
 
 
 TO_VERIFY = [Items.Hay, Items.Wood, Items.Water_Tank, Items.Empty_Tank, Items.Carrot_Seed, Items.Carrot, Items.Pumpkin,
-             Items.Pumpkin_Seed]
+             Items.Pumpkin_Seed, Items.Power, Items.Gold]
 
 
 def verify_all_quotas():

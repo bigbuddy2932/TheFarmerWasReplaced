@@ -20,6 +20,8 @@ while True:
         continue
     if do_pumpkin_trades():
         continue
-    #if try_farm_entity(Entities.Treasure):
-    #    continue
-    force_farm_entity(Entities.Tree)
+    if try_farm_entity(Entities.Sunflower):
+        continue
+    if try_farm_entity(Entities.Treasure):
+        continue
+    force_farm_entity(Entities.Sunflower)
