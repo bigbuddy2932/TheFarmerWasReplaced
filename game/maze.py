@@ -1,13 +1,16 @@
 from bushes import *
 
 
+def will_farm_maze():
+    return num_items(Items.Fertilizer) > CONST_FERTILIZER_QUOTA / 2 and not verify_quota(Items.Gold)
+
+
 def init_farm_maze():
     noop = 0
 
 
 def plant_maze():
     traverse(0, 0)
-    harvest()
     plant_bush()
     while get_entity_type() != Entities.Hedge and num_items(Items.Fertilizer) > 0:
         use_item(Items.Fertilizer)
@@ -31,4 +34,6 @@ def farm_maze():
             if not move(West):
                 move(North)
         i += 1
+        if i % 100 == 99:
+            quick_print(i)
     harvest()

@@ -1,7 +1,12 @@
 from farming import *
 
 
+def will_farm_bushes():
+    return not verify_quota(Items.Wood)
+
+
 def plant_bush():
+    harvest()
     plant(Entities.Bush)
 
 

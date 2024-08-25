@@ -1,50 +1,31 @@
 from crop_imports import *
 
+will_farm_methods = {Entities.Grass: will_farm_hay, Entities.Bush: will_farm_bushes,
+                     Entities.Carrots: will_farm_carrots, Entities.Pumpkin: will_farm_pumpkins,
+                     Entities.Sunflower: will_farm_sunflowers, Entities.Treasure: will_farm_maze}
+
 
 def will_farm_entity(entity_to_farm):
-    if entity_to_farm == Entities.Grass:
-        return not verify_quota(Items.Hay)
-    elif entity_to_farm == Entities.Bush:
-        return not verify_quota(Items.Wood)
-    elif entity_to_farm == Entities.Carrots:
-        return num_items(Items.Carrot_Seed) > 0 and not verify_quota(Items.Carrot)
-    elif entity_to_farm == Entities.Pumpkin:
-        return num_items(Items.Pumpkin_Seed) > CONST_PUMPKIN_SEED_QUOTA / 2 and not verify_quota(Items.Pumpkin)
-    elif entity_to_farm == Entities.Sunflower:
-        return num_items(Items.Sunflower_Seed) > 0 and not verify_quota(Items.Power)
-    elif entity_to_farm == Items.Gold:
-        return not verify_quota(Items.Gold)
+    if entity_to_farm in will_farm_methods:
+        return will_farm_methods[entity_to_farm]()
     return False
 
 
+init_methods = {Entities.Grass: init_farm_hay, Entities.Bush: init_farm_bush, Entities.Carrots: init_farm_carrot,
+                Entities.Pumpkin: init_farm_pumpkin, Entities.Sunflower: init_farm_sunflowers,
+                Entities.Treasure: init_farm_maze}
+
+
 def init_entity(entity_to_farm):
-    if entity_to_farm == Entities.Grass:
-        init_farm_hay()
-    elif entity_to_farm == Entities.Bush:
-        init_farm_bush()
-    elif entity_to_farm == Entities.Carrots:
-        init_farm_carrot()
-    elif entity_to_farm == Entities.Pumpkin:
-        init_farm_pumpkin()
-    elif entity_to_farm == Entities.Sunflower:
-        init_farm_sunflowers()
-    elif entity_to_farm == Items.Gold:
-        init_farm_maze()
+    init_methods[entity_to_farm]()
+
+
+farm_methods = {Entities.Grass: farm_hay, Entities.Bush: farm_bush, Entities.Carrots: farm_carrot,
+                Entities.Pumpkin: farm_pumpkin, Entities.Sunflower: farm_sunflowers, Entities.Treasure: farm_maze}
 
 
 def farm_entity(entity_to_farm):
-    if entity_to_farm == Entities.Grass:
-        farm_hay()
-    elif entity_to_farm == Entities.Bush:
-        farm_bush()
-    elif entity_to_farm == Entities.Carrots:
-        farm_carrot()
-    elif entity_to_farm == Entities.Pumpkin:
-        farm_pumpkin()
-    elif entity_to_farm == Entities.Sunflower:
-        farm_sunflowers()
-    elif entity_to_farm == Items.Gold:
-        farm_maze()
+    farm_methods[entity_to_farm]()
 
 
 def try_farm_entity(entity_to_farm):
@@ -57,14 +38,20 @@ def try_farm_entity(entity_to_farm):
 
 
 TO_VERIFY = [Items.Hay, Items.Wood, Items.Water_Tank, Items.Empty_Tank, Items.Carrot_Seed, Items.Carrot, Items.Pumpkin,
-             Items.Pumpkin_Seed, Items.Gold]
+             Items.Pumpkin_Seed]
 
 
 def verify_all_quotas():
     for item in TO_VERIFY:
         if not verify_quota(item):
+            quick_print("Quota not hit for:")
+            quick_print(item)
+            quick_print("Has:")
+            quick_print(num_items(item))
+            quick_print("Needs:")
+            quick_print(quotas[item])
             return False
-    print("QUOTAS HIT")
+    print("QUOTAS MET")
     return True
 
 

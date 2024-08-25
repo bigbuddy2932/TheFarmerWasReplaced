@@ -1,6 +1,10 @@
 from farming import *
 
 
+def will_farm_pumpkins():
+    return num_items(Items.Pumpkin_Seed) > CONST_PUMPKIN_SEED_QUOTA / 2 and not verify_quota(Items.Pumpkin)
+
+
 def init_farm_pumpkin():
     full_snake_path(init_farm_pumpkin_tile)
 
@@ -13,38 +17,18 @@ def init_farm_pumpkin_tile():
 
 
 def farm_pumpkin():
-    all_ready = False
-
-    while not all_ready:
-        if num_items(Items.Pumpkin_Seed) == 0:
-            full_snake_path(harvest)
-            break
-        all_ready = True
-        initx = 0
-        inity = 0
-        width = get_world_size()-1
-        height = get_world_size()-1
-
-        traverse(initx, inity)
-        right_bound = initx + width
-        top_bound = inity + height
-        for x in range(initx, right_bound + 1):
-            if get_pos_y() == top_bound:
-                while get_pos_y() != inity:
-                    if not check_pumpkin_tile():
-                        all_ready = False
-                    move(South)
-            else:
-                while get_pos_y() != top_bound:
-                    if not check_pumpkin_tile():
-                        all_ready = False
-                    move(North)
-            if x != right_bound:
-                if not check_pumpkin_tile():
-                    all_ready = False
-                move(East)
-        if not check_pumpkin_tile():
-            all_ready = False
+    cells_to_check = {}
+    for x in range(get_world_size()):
+        for y in range(get_world_size()):
+            cells_to_check[(x, y)] = None
+    while len(cells_to_check) > 0:
+        to_remove = []
+        for cell in cells_to_check:
+            traverse(cell[0], cell[1])
+            if check_pumpkin_tile():
+                to_remove.append(cell)
+        for cell in to_remove:
+            cells_to_check.pop(cell)
     harvest()
 
 
