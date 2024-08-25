@@ -1,7 +1,10 @@
 from action_verifier import *
 from trading import *
 
-full_snake_path(harvest)
+if get_entity_type() != Entities.Hedge:
+    full_snake_path(harvest)
+else:
+    harvest()
 clear()
 while True:
     try_farm_entity(Entities.Grass)

@@ -15,14 +15,20 @@ def plant_maze():
 
 def farm_maze():
     plant_maze()
-    while get_entity_type() == Entities.Hedge:
+    i = 0
+    while get_entity_type() == Entities.Hedge and i < 1000:
         dir = random() * 4
         if dir >= 3:
-            move(North)
+            if not move(North):
+                move(East)
         elif dir >= 2:
-            move(South)
+            if not move(South):
+                move(West)
         elif dir >= 1:
-            move(East)
+            if not move(East):
+                move(South)
         else:
-            move(West)
+            if not move(West):
+                move(North)
+        i += 1
     harvest()
