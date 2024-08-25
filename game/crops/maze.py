@@ -1,4 +1,5 @@
 from bushes import *
+from ..collection_lib import *
 
 
 def will_farm_maze():
@@ -16,24 +17,30 @@ def plant_maze():
         use_item(Items.Fertilizer)
 
 
+def solve_maze():
+    cell_is_dead = {}
+    cell_possible_directions = {}
+    last_moved_dir = North
+    for x in range(get_world_size()):
+        for y in range(get_world_size()):
+            cell_is_dead[(x, y)] = False
+            cell_possible_directions[(x, y)] = {North, South, East, West}
+
+    while get_entity_type() == Entities.Hedge:
+        current_cell_directions = cell_possible_directions[cur_pos()]
+        move_to = random_from_set(make_set_without(current_cell_directions, opposite(last_moved_dir)))
+        if move_to == None:
+            move_to = opposite(last_moved_dir)
+            quick_print(move_to)
+        success = move(move_to)
+        if not success:
+            cell_possible_directions[cur_pos()] = make_set_without(current_cell_directions, move_to)
+        else:
+            last_moved_dir = move_to
+
+
+
 def farm_maze():
     plant_maze()
-    i = 0
-    while get_entity_type() == Entities.Hedge and i < 1000:
-        dir = random() * 4
-        if dir >= 3:
-            if not move(North):
-                move(East)
-        elif dir >= 2:
-            if not move(South):
-                move(West)
-        elif dir >= 1:
-            if not move(East):
-                move(South)
-        else:
-            if not move(West):
-                move(North)
-        i += 1
-        if i % 100 == 99:
-            quick_print(i)
+    solve_maze()
     harvest()

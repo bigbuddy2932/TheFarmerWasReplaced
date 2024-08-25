@@ -24,4 +24,4 @@ while True:
         continue
     if try_farm_entity(Entities.Treasure):
         continue
-    force_farm_entity(Entities.Sunflower)
+    force_farm_entity(Entities.Treasure)

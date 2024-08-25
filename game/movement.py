@@ -16,6 +16,10 @@ def move_diff(mov_x, mov_y):
         mov_y += 1
 
 
+def move_diff_vector(vector):
+    move_diff(vector[0], vector[1])
+
+
 def calc_shortest(cur, dest):
     possibility1 = 0
     possibility2 = 0
@@ -56,3 +60,37 @@ def snake_path(action, initx, inity, width, height):
 
 def full_snake_path(action):
     snake_path(action, 0, 0, get_world_size() - 1, get_world_size() - 1)
+
+
+def opposite(direction):
+    if direction == North:
+        return South
+    if direction == South:
+        return North
+    if direction == East:
+        return West
+    return East
+
+
+def turn(direction):
+    if direction == North:
+        return East
+    if direction == East:
+        return South
+    if direction == South:
+        return West
+    return North
+
+
+def cur_pos():
+    return get_pos_x(), get_pos_y()
+
+
+def apply_direction(position, direction):
+    if direction == North:
+        return position[0], position[1] + 1
+    if direction == East:
+        return position[0] + 1, position[1]
+    if direction == South:
+        return position[0], position[1] - 1
+    return position[0] - 1, position[1]
