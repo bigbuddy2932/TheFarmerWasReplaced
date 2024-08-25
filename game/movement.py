@@ -16,20 +16,8 @@ def move_diff(mov_x, mov_y):
         mov_y += 1
 
 
-def my_min(a, b):
-    if a > b:
-        return b
-    return a
-
-
-def my_max(a, b):
-    if a > b:
-        return b
-    return a
-
-
 def my_abs(a):
-    if a > 0:
+    if a > -1:
         return a
     return a * -1
 
@@ -51,3 +39,26 @@ def calc_shortest(cur, dest):
 
 def traverse(dest_x, dest_y):
     move_diff(calc_shortest(get_pos_x(), dest_x), calc_shortest(get_pos_y(), dest_y))
+
+
+def snake_path(action, initx, inity, width, height):
+    traverse(initx, inity)
+    right_bound = initx + width
+    top_bound = inity + height
+    for x in range(initx, right_bound + 1):
+        if get_pos_y() == top_bound:
+            while get_pos_y() != inity:
+                action()
+                move(South)
+        else:
+            while get_pos_y() != top_bound:
+                action()
+                move(North)
+        if x != right_bound:
+            action()
+            move(East)
+    action()
+
+
+def full_snake_path(action):
+    snake_path(action, 0, 0, get_world_size() - 1, get_world_size() - 1)

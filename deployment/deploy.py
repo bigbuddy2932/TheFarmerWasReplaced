@@ -20,10 +20,15 @@ def write_file_to_main(read_path):
         target_file.write("\n\n\n")
 
 
+main_path = None
 for path in pathlist:
     path_in_str = str(path)
-    if path_in_str.endswith(CONST_BUILTIN):
+    if path_in_str.endswith(CONST_BUILTIN) or path_in_str.endswith("_imports.py"):
+        continue
+    if path_in_str.endswith(CONST_MAIN):
+        main_path = path_in_str
         continue
     write_file_to_main(path_in_str)
 
+write_file_to_main(main_path)
 target_file.close()
