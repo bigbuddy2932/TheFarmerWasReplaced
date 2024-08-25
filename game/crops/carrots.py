@@ -1,4 +1,4 @@
-from farming import *
+from ..farming import *
 
 
 def will_farm_carrots():

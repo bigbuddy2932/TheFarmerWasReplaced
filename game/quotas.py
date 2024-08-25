@@ -15,11 +15,32 @@ CONST_GOLD_QUOTA = get_world_size() * get_world_size() * 64
 # Special quota for watering
 CONST_WATER_LEVEL_QUOTA = 0.75
 
-quotas = {Items.Hay: CONST_HAY_QUOTA, Items.Wood: CONST_WOOD_QUOTA, Items.Water_Tank: CONST_WATER_TANK_QUOTA,
-          Items.Empty_Tank: CONST_EMPTY_TANK_QUOTA, Items.Carrot_Seed: CONST_CARROT_SEED_QUOTA,
-          Items.Carrot: CONST_CARROT_QUOTA, Items.Pumpkin_Seed: CONST_PUMPKIN_SEED_QUOTA,
-          Items.Pumpkin: CONST_PUMPKIN_QUOTA, Items.Sunflower_Seed: CONST_SUNFLOWER_SEED_QUOTA,
-          Items.Fertilizer: CONST_FERTILIZER_QUOTA, Items.Power: CONST_POWER_QUOTA, Items.Gold: CONST_GOLD_QUOTA}
+default_quotas = {Items.Hay: CONST_HAY_QUOTA, Items.Wood: CONST_WOOD_QUOTA, Items.Water_Tank: CONST_WATER_TANK_QUOTA,
+                  Items.Empty_Tank: CONST_EMPTY_TANK_QUOTA, Items.Carrot_Seed: CONST_CARROT_SEED_QUOTA,
+                  Items.Carrot: CONST_CARROT_QUOTA, Items.Pumpkin_Seed: CONST_PUMPKIN_SEED_QUOTA,
+                  Items.Pumpkin: CONST_PUMPKIN_QUOTA, Items.Sunflower_Seed: CONST_SUNFLOWER_SEED_QUOTA,
+                  Items.Fertilizer: CONST_FERTILIZER_QUOTA, Items.Power: CONST_POWER_QUOTA,
+                  Items.Gold: CONST_GOLD_QUOTA}
+
+quotas = {}
+
+auto_unlock_candidates = [Unlocks.Expand, Unlocks.Speed, Unlocks.Carrots, Unlocks.Benchmark, Unlocks.Debug_2,
+                          Unlocks.Sunflowers, Unlocks.Dinosaurs, Unlocks.Auto_Unlock, Unlocks.Leaderboard]
+
+
+def refresh_quotas():
+    for item in default_quotas:
+        if item not in quotas:
+            quotas[item] = default_quotas[item]
+    for unlock_element in auto_unlock_candidates:
+        cost = get_cost(unlock_element)
+        if cost != None:
+            for item in cost:
+                if item in quotas:
+                    quotas[item] = max(quotas[item], cost[item])
+
+
+refresh_quotas()
 
 
 def verify_quota(item_to_verify):

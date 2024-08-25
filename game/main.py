@@ -7,6 +7,7 @@ else:
     harvest()
 clear()
 while True:
+    refresh_quotas()
     try_farm_entity(Entities.Grass)
     try_farm_entity(Entities.Bush)
     if do_wood_trades():

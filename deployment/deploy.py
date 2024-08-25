@@ -1,11 +1,10 @@
-import os
 from pathlib import Path
 
 CONST_SAVE_BASE = "/home/sonata/syslink/TheFarmerWasReplacedSaves/"
 CONST_DEFAULT_FILE = "Save0"
 CONST_BUILTIN = "__builtins__.py"
 CONST_MAIN = "main.py"
-CONST_CODE_GLOB = "*.py"
+CONST_CODE_GLOB = "**/*.py"
 
 pathlist = Path().resolve().glob(CONST_CODE_GLOB)
 
@@ -23,7 +22,7 @@ def write_file_to_main(read_path):
 main_path = None
 for path in pathlist:
     path_in_str = str(path)
-    if path_in_str.endswith(CONST_BUILTIN) or path_in_str.endswith("_imports.py"):
+    if path_in_str.endswith(CONST_BUILTIN) or path_in_str.endswith("_imports.py") or path_in_str.endswith("__init__.py"):
         continue
     if path_in_str.endswith(CONST_MAIN):
         main_path = path_in_str
