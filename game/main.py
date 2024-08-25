@@ -16,4 +16,6 @@ while True:
         continue
     if do_pumpkin_trades():
         continue
+    if try_farm_entity(Items.Gold):
+        continue
     force_farm_entity(Entities.Carrots)

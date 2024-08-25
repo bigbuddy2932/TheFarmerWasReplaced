@@ -10,8 +10,10 @@ CONST_PUMPKIN_SEED_QUOTA = get_world_size() * get_world_size() * 8
 CONST_PUMPKIN_QUOTA = 10000
 CONST_SUNFLOWER_SEED_QUOTA = get_world_size() * get_world_size() * 8
 CONST_FERTILIZER_QUOTA = 200
-CONST_SUNFLOWER_QUOTA = 10000
+CONST_POWER_QUOTA = 10000
+CONST_GOLD_QUOTA = 10000
 CONST_WATER_LEVEL_QUOTA = 0.75
+
 
 def verify_quota(item_to_verify):
     if item_to_verify == Items.Hay:
@@ -32,6 +34,10 @@ def verify_quota(item_to_verify):
         return num_items(item_to_verify) >= CONST_PUMPKIN_QUOTA
     elif item_to_verify == Items.Sunflower_Seed:
         return num_items(item_to_verify) >= CONST_SUNFLOWER_SEED_QUOTA
+    elif item_to_verify == Items.Power:
+        return num_items(item_to_verify) >= CONST_POWER_QUOTA
     elif item_to_verify == Items.Fertilizer:
         return num_items(item_to_verify) >= CONST_FERTILIZER_QUOTA
+    elif item_to_verify == Items.Gold:
+        return num_items(item_to_verify) >= CONST_GOLD_QUOTA
     return True

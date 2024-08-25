@@ -10,6 +10,10 @@ def will_farm_entity(entity_to_farm):
         return num_items(Items.Carrot_Seed) > 0 and not verify_quota(Items.Carrot)
     elif entity_to_farm == Entities.Pumpkin:
         return num_items(Items.Pumpkin_Seed) > CONST_PUMPKIN_SEED_QUOTA / 2 and not verify_quota(Items.Pumpkin)
+    elif entity_to_farm == Entities.Sunflower:
+        return num_items(Items.Sunflower_Seed) > 0 and not verify_quota(Items.Power)
+    elif entity_to_farm == Items.Gold:
+        return not verify_quota(Items.Gold)
     return False
 
 
@@ -22,6 +26,10 @@ def init_entity(entity_to_farm):
         init_farm_carrot()
     elif entity_to_farm == Entities.Pumpkin:
         init_farm_pumpkin()
+    elif entity_to_farm == Entities.Sunflower:
+        init_farm_sunflowers()
+    elif entity_to_farm == Items.Gold:
+        init_farm_maze()
 
 
 def farm_entity(entity_to_farm):
@@ -33,6 +41,10 @@ def farm_entity(entity_to_farm):
         farm_carrot()
     elif entity_to_farm == Entities.Pumpkin:
         farm_pumpkin()
+    elif entity_to_farm == Entities.Sunflower:
+        farm_sunflowers()
+    elif entity_to_farm == Items.Gold:
+        farm_maze()
 
 
 def try_farm_entity(entity_to_farm):
@@ -45,7 +57,7 @@ def try_farm_entity(entity_to_farm):
 
 
 TO_VERIFY = [Items.Hay, Items.Wood, Items.Water_Tank, Items.Empty_Tank, Items.Carrot_Seed, Items.Carrot, Items.Pumpkin,
-             Items.Pumpkin_Seed]
+             Items.Pumpkin_Seed, Items.Gold]
 
 
 def verify_all_quotas():
