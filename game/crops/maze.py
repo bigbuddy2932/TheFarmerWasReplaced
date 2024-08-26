@@ -17,7 +17,7 @@ def plant_maze():
         use_item(Items.Fertilizer)
 
 
-CONST_LAYERS = 299
+CONST_LAYERS = 10
 
 
 def solve_maze():

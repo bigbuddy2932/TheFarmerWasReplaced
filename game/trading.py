@@ -41,3 +41,9 @@ def do_pumpkin_trades():
         buy_all_you_can(Items.Fertilizer)
         return True
     return False
+
+
+def do_maze_trades():
+    if not verify_quota(Items.Cactus_Seed):
+        buy_all_you_can(Items.Cactus_Seed)
+        return True

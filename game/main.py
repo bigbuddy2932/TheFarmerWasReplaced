@@ -24,4 +24,8 @@ while True:
         continue
     if try_farm_entity(Entities.Treasure):
         continue
-    force_farm_entity(Entities.Treasure)
+    if do_maze_trades():
+        continue
+    if try_farm_entity(Entities.Cactus):
+        continue
+    force_farm_entity(Entities.Cactus)

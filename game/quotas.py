@@ -12,6 +12,8 @@ CONST_SUNFLOWER_SEED_QUOTA = get_world_size() * get_world_size() * 8
 CONST_FERTILIZER_QUOTA = get_world_size() * get_world_size() * 8
 CONST_POWER_QUOTA = get_world_size() * get_world_size() * 64
 CONST_GOLD_QUOTA = get_world_size() * get_world_size() * 64
+CONST_CACTUS_SEED_QUOTA = get_world_size() * get_world_size() * 8
+CONST_CACTUS_QUOTA = get_world_size() * get_world_size() * 64
 # Special quota for watering
 CONST_WATER_LEVEL_QUOTA = 0.75
 
@@ -20,7 +22,8 @@ default_quotas = {Items.Hay: CONST_HAY_QUOTA, Items.Wood: CONST_WOOD_QUOTA, Item
                   Items.Carrot: CONST_CARROT_QUOTA, Items.Pumpkin_Seed: CONST_PUMPKIN_SEED_QUOTA,
                   Items.Pumpkin: CONST_PUMPKIN_QUOTA, Items.Sunflower_Seed: CONST_SUNFLOWER_SEED_QUOTA,
                   Items.Fertilizer: CONST_FERTILIZER_QUOTA, Items.Power: CONST_POWER_QUOTA,
-                  Items.Gold: CONST_GOLD_QUOTA}
+                  Items.Gold: CONST_GOLD_QUOTA, Items.Cactus_Seed: CONST_CACTUS_SEED_QUOTA,
+                  Items.Cactus: CONST_CACTUS_QUOTA}
 
 quotas = {}
 
