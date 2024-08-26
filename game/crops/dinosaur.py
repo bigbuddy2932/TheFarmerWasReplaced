@@ -10,10 +10,7 @@ def init_farm_dinosaurs():
 
 
 def init_farm_dinosaurs_tile():
-    check_till()
-    try_water()
     plant(Entities.Dinosaur)
-
 
 
 def farm_dinosaur():

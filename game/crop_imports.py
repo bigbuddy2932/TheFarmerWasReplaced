@@ -6,4 +6,5 @@ from crops.pumpkins import *
 from crops.sunflowers import *
 from crops.trees import *
 from crops.cactus import *
+from crops.dinosaur import *
 

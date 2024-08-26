@@ -3,7 +3,8 @@ from crop_imports import *
 will_farm_methods = {Entities.Grass: will_farm_hay, Entities.Bush: will_farm_bushes,
                      Entities.Carrots: will_farm_carrots, Entities.Pumpkin: will_farm_pumpkins,
                      Entities.Sunflower: will_farm_sunflowers, Entities.Treasure: will_farm_maze,
-                     Entities.Tree: will_farm_trees, Entities.Cactus: will_farm_cactus}
+                     Entities.Tree: will_farm_trees, Entities.Cactus: will_farm_cactus,
+                     Entities.Dinosaur: will_farm_dinosaurs}
 
 
 def will_farm_entity(entity_to_farm):
@@ -14,7 +15,8 @@ def will_farm_entity(entity_to_farm):
 
 init_methods = {Entities.Grass: init_farm_hay, Entities.Bush: init_farm_bush, Entities.Carrots: init_farm_carrot,
                 Entities.Pumpkin: init_farm_pumpkin, Entities.Sunflower: init_farm_sunflowers,
-                Entities.Treasure: init_farm_maze, Entities.Tree: init_farm_trees, Entities.Cactus: init_farm_cactus}
+                Entities.Treasure: init_farm_maze, Entities.Tree: init_farm_trees, Entities.Cactus: init_farm_cactus,
+                Entities.Dinosaur: init_farm_dinosaurs}
 
 
 def init_entity(entity_to_farm):
@@ -23,7 +25,7 @@ def init_entity(entity_to_farm):
 
 farm_methods = {Entities.Grass: farm_hay, Entities.Bush: farm_bush, Entities.Carrots: farm_carrot,
                 Entities.Pumpkin: farm_pumpkin, Entities.Sunflower: farm_sunflowers, Entities.Treasure: farm_maze,
-                Entities.Tree: farm_tree, Entities.Cactus: farm_cactus}
+                Entities.Tree: farm_tree, Entities.Cactus: farm_cactus, Entities.Dinosaur: farm_dinosaur}
 
 
 def farm_entity(entity_to_farm):
@@ -40,7 +42,8 @@ def try_farm_entity(entity_to_farm):
 
 
 TO_VERIFY = [Items.Hay, Items.Wood, Items.Water_Tank, Items.Empty_Tank, Items.Carrot_Seed, Items.Carrot, Items.Pumpkin,
-             Items.Pumpkin_Seed, Items.Power, Items.Gold, Items.Fertilizer, Items.Sunflower_Seed, Items.Cactus_Seed]
+             Items.Pumpkin_Seed, Items.Power, Items.Gold, Items.Fertilizer, Items.Sunflower_Seed, Items.Cactus_Seed,
+             Items.Egg, Items.Bones]
 
 
 def verify_all_quotas():
