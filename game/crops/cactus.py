@@ -2,7 +2,7 @@ from ..farming import *
 
 
 def will_farm_cactus():
-    return not verify_quota(Items.Cactus)
+    return not verify_quota(Items.Cactus) and num_items(Items.Cactus_Seed) > get_world_size() * get_world_size()
 
 
 def init_farm_cactus():

@@ -2,7 +2,7 @@ from ..farming import *
 
 
 def will_farm_dinosaurs():
-    return not verify_quota(Items.Bones)
+    return not verify_quota(Items.Bones) and num_items(Items.Egg) > get_world_size() * get_world_size()
 
 
 def init_farm_dinosaurs():

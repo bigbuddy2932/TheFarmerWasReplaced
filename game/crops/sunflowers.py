@@ -2,7 +2,7 @@ from ..farming import *
 
 
 def will_farm_sunflowers():
-    return num_items(Items.Sunflower_Seed) > 0 and not verify_quota(Items.Power)
+    return num_items(Items.Sunflower_Seed) > get_world_size() * get_world_size() and not verify_quota(Items.Power)
 
 
 def init_farm_sunflowers():
@@ -19,7 +19,7 @@ def init_farm_sunflowers_tile():
 def farm_sunflowers():
     petal_counts = {}
 
-    for pedals in range(7, 16):
+    for pedals in range(5, 16):
         petal_counts[pedals] = set()
 
     for x in range(get_world_size()):

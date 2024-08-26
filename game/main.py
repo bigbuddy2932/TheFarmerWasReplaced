@@ -8,6 +8,7 @@ else:
 clear()
 while True:
     refresh_quotas()
+    try_auto_unlock()
     try_farm_entity(Entities.Grass)
     try_farm_entity(Entities.Tree)
     if do_wood_trades():
@@ -28,4 +29,7 @@ while True:
         continue
     if try_farm_entity(Entities.Cactus):
         continue
+    if do_cactus_trades():
+        continue
+    try_auto_unlock()
     force_farm_entity(Entities.Cactus)

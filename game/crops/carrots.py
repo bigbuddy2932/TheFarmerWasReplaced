@@ -2,7 +2,7 @@ from ..farming import *
 
 
 def will_farm_carrots():
-    return num_items(Items.Carrot_Seed) > 0 and not verify_quota(Items.Carrot)
+    return num_items(Items.Carrot_Seed) > get_world_size() * get_world_size() and not verify_quota(Items.Carrot)
 
 
 def plant_carrots():

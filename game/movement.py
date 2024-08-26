@@ -20,6 +20,12 @@ def move_diff_vector(vector):
     move_diff(vector[0], vector[1])
 
 
+def my_abs(a):
+    if a > -1:
+        return a
+    return a * -1
+
+
 def calc_shortest(cur, dest):
     possibility1 = 0
     possibility2 = 0
@@ -30,7 +36,7 @@ def calc_shortest(cur, dest):
     while (possibility2 + cur) % get_world_size() != dest:
         possibility2 -= 1
 
-    if abs(possibility1) > abs(possibility2):
+    if my_abs(possibility1) > my_abs(possibility2):
         return possibility2
     return possibility1
 
