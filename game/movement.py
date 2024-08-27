@@ -88,7 +88,7 @@ def turn(direction):
     return North
 
 
-def cur_pos():
+def get_pos():
     return get_pos_x(), get_pos_y()
 
 
@@ -100,3 +100,12 @@ def apply_direction(position, direction):
     if direction == South:
         return position[0], position[1] - 1
     return position[0] - 1, position[1]
+
+
+def adjacent_tiles_of(pos):
+    out = set()
+    out.add((pos[0] + 1, pos[1]))
+    out.add((pos[0] - 1, pos[1]))
+    out.add((pos[0], pos[1] + 1))
+    out.add((pos[0], pos[1] - 1))
+    return out

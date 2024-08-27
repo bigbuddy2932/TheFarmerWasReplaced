@@ -41,10 +41,12 @@ def try_farm_entity(entity_to_farm):
     return False
 
 
-TO_VERIFY = [Items.Hay, Items.Wood, Items.Water_Tank, Items.Empty_Tank, Items.Carrot_Seed, Items.Carrot, Items.Pumpkin,
-             Items.Pumpkin_Seed, Items.Power, Items.Gold, Items.Fertilizer, Items.Sunflower_Seed, Items.Cactus_Seed,
-             Items.Egg, Items.Bones]
+#TO_VERIFY = [Items.Hay, Items.Wood, Items.Water_Tank, Items.Empty_Tank, Items.Carrot_Seed, Items.Carrot, Items.Pumpkin,
+#             Items.Pumpkin_Seed, Items.Power, Items.Gold, Items.Fertilizer, Items.Sunflower_Seed, Items.Cactus_Seed,
+#             Items.Egg, Items.Bones]
 
+TO_VERIFY = [Items.Hay, Items.Wood, Items.Water_Tank, Items.Empty_Tank, Items.Carrot_Seed, Items.Carrot, Items.Pumpkin,
+             Items.Pumpkin_Seed, Items.Power, Items.Gold, Items.Fertilizer, Items.Sunflower_Seed]
 
 def verify_all_quotas():
     for item in TO_VERIFY:

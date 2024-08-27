@@ -25,11 +25,11 @@ while True:
         continue
     if try_farm_entity(Entities.Treasure):
         continue
-    if do_maze_trades():
-        continue
-    if try_farm_entity(Entities.Cactus):
-        continue
-    if do_cactus_trades():
-        continue
+#    if do_maze_trades():
+#        continue
+#    if try_farm_entity(Entities.Cactus):
+#        continue
+#    if do_cactus_trades():
+#        continue
     try_auto_unlock()
-    force_farm_entity(Entities.Cactus)
+    force_farm_entity(Entities.Treasure)
