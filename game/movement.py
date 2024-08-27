@@ -109,3 +109,12 @@ def adjacent_tiles_of(pos):
     out.add((pos[0], pos[1] + 1))
     out.add((pos[0], pos[1] - 1))
     return out
+
+
+def traverse_x(x):
+    traverse(x, 0)
+
+
+def traverse_y(y):
+    traverse(0, y)
+
